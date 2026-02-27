@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaDistant.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:YourProjectName.ViewModels"
+        xmlns:Models="clr-namespace:AvaloniaDistant.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaDistant.Views.MainWindow"
+        x:DataType="viewModels:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaDistant">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <viewModels:MainWindowViewModel/>
+    </Design.DataContext>
+    
+     <Grid RowDefinitions="* Auto" >
+        <ListBox ItemsSource="{Binding IllnessRecordsDTOList}">
+            <ListBox.DataTemplates>
+                <DataTemplate DataType="Models:IllnessRecordDTO" >
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding FullName, StringFormat=FullName: {0}}"/>
+                        <Label Content="{Binding Department, StringFormat= Department: {0}}"/>
+                        <Label Content="{Binding StartDate, StringFormat= StartDate: {0}}"/>
+                        <Label Content="{Binding EndDate, StringFormat= EndDate: {0}}"/>
+                        <Label Content="{Binding Days, StringFormat= Days: {0}}"/>
+                        <Label Content="{Binding Illness, StringFormat= Illness: {0}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.DataTemplates>
+        </ListBox>
+         
+      
+    </Grid>
+     
+
+
+        
+
+
+</Window>
